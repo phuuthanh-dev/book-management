@@ -349,6 +349,7 @@
             dgvBookList.RowTemplate.Height = 29;
             dgvBookList.Size = new Size(458, 278);
             dgvBookList.TabIndex = 0;
+            dgvBookList.SelectionChanged += dgvBookList_SelectionChanged;
             // 
             // lblBookList
             // 
