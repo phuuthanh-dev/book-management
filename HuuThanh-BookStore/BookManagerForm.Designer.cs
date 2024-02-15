@@ -396,6 +396,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Book Manager";
             FormClosed += BookManagerForm_FormClosed;
+            Load += BookManagerForm_Load;
             gbBookInfo.ResumeLayout(false);
             gbBookInfo.PerformLayout();
             gbTask.ResumeLayout(false);
