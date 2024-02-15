@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Services;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace BookStore_HoangNT
 {
     public partial class BookManagerForm : Form
     {
+        private BookService _service = new BookService();
         public BookManagerForm()
         {
             InitializeComponent();
@@ -25,6 +27,15 @@ namespace BookStore_HoangNT
         private void BookManagerForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
+        }
+
+        private void BookManagerForm_Load(object sender, EventArgs e)
+        {
+            var result = _service.GetAllBooks();
+            dgvBookList.DataSource = null;
+            dgvBookList.DataSource = result;
+            //giấu cột CategoryId, nó đang chứa 1 dòng của table Category
+            dgvBookList.Columns["BookCategory"].Visible = false;
         }
     }
 }

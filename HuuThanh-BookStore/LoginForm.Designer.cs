@@ -79,6 +79,7 @@
             txtPassword.Name = "txtPassword";
             txtPassword.Size = new Size(193, 23);
             txtPassword.TabIndex = 1;
+            txtPassword.UseSystemPasswordChar = true;
             // 
             // lblPassword
             // 
@@ -130,6 +131,7 @@
             // 
             // LoginForm
             // 
+            AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlDarkDark;
