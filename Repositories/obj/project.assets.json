@@ -3214,11 +3214,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\FPTU\\Ki5\\PRN211\\1MonthC#\\SU24_HuuThanh-BookStore\\Repositories\\Repositories.csproj",
+      "projectUniqueName": "D:\\FPTU\\Ki5\\PRN211\\SU24_HuuThanh-BookStore\\Repositories\\Repositories.csproj",
       "projectName": "Repositories",
-      "projectPath": "D:\\FPTU\\Ki5\\PRN211\\1MonthC#\\SU24_HuuThanh-BookStore\\Repositories\\Repositories.csproj",
+      "projectPath": "D:\\FPTU\\Ki5\\PRN211\\SU24_HuuThanh-BookStore\\Repositories\\Repositories.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "D:\\FPTU\\Ki5\\PRN211\\1MonthC#\\SU24_HuuThanh-BookStore\\Repositories\\obj\\",
+      "outputPath": "D:\\FPTU\\Ki5\\PRN211\\SU24_HuuThanh-BookStore\\Repositories\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

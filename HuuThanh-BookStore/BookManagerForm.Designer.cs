@@ -276,6 +276,7 @@
             btnExit.TabIndex = 3;
             btnExit.Text = "Exit";
             btnExit.UseVisualStyleBackColor = false;
+            btnExit.Click += btnExit_Click;
             // 
             // btnDelete
             // 
@@ -378,7 +379,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(192, 0, 0);
-            BackgroundImage = HuuThanh_BookStore.Properties.Resources.books_1163695_12804;
+            BackgroundImage = HuuThanh_BookStore.Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(970, 484);
             Controls.Add(lblFormTitle);
@@ -394,6 +395,7 @@
             Name = "BookManagerForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Book Manager";
+            FormClosed += BookManagerForm_FormClosed;
             gbBookInfo.ResumeLayout(false);
             gbBookInfo.PerformLayout();
             gbTask.ResumeLayout(false);
