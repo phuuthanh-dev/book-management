@@ -51,7 +51,7 @@ namespace BookStore_HoangNT
         {
             if (dgvBookList.SelectedRows.Count > 0)
             {
-                var selectedBook = (Book) dgvBookList.SelectedRows[0].DataBoundItem;
+                var selectedBook = (Book)dgvBookList.SelectedRows[0].DataBoundItem;
                 //có đc 1 cuốn sách đc lựa chọn
                 txtId.Text = selectedBook.BookId.ToString();
                 txtName.Text = selectedBook.BookName;
@@ -62,6 +62,21 @@ namespace BookStore_HoangNT
                 txtAuthor.Text = selectedBook.Author;
                 cboCategory.SelectedValue = selectedBook.BookCategoryId;
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtKeyword.Text))
+            {
+                MessageBox.Show("The search keyword is required!",
+                    "Search keyword required", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var result = _bookService.SearchBooks(txtKeyword.Text.Trim());
+
+            //TODO: THÔNG BÁO NẾU KẾT QUẢ SEARCH KO CÓ
+            dgvBookList.DataSource = null;
+            dgvBookList.DataSource = result;
         }
     }
 }
