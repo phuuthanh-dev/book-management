@@ -21,5 +21,19 @@ namespace Services
         {
             return _repo.GetAll();
         }
+
+        /// <summary>
+        /// Hàm này search cuốn sách theo tiêu chí name và description
+        /// Search theo kiểu contains
+        /// </summary>
+        /// <param name="keyword"></param>
+        /// <returns></returns>
+        public List<Book> SearchBooks(string keyword) 
+        {
+            List<Book> result = _repo.GetAll().Where(x => x.BookName.ToLower().Contains(keyword.ToLower()) 
+                                                      || x.Description.ToLower().Contains(keyword.ToLower())
+                                                     ).ToList();
+            return result;
+        }
     }
 }
