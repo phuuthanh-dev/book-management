@@ -78,5 +78,27 @@ namespace BookStore_HoangNT
             dgvBookList.DataSource = null;
             dgvBookList.DataSource = result;
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            //mã sách là con số int
+            //Convert.ToInt32(chữ về số) Integer.Parse()
+            //int.Parse(chữ về số)
+            //Int32.Parse(chữ về số)
+            //ném ra ngoài ngoại lệ nếu convert ko đc
+            //int.TryParse(txtId.Text, out int id);
+            int id;
+            if (string.IsNullOrWhiteSpace(txtId.Text) || !int.TryParse(txtId.Text, out id))
+            {
+                MessageBox.Show("The Book ID is required!!!",
+                    "Book ID required", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            _bookService.DeleteABook(id);
+
+            var result = _bookService.GetAllBooks();
+            dgvBookList.DataSource = null;
+            dgvBookList.DataSource = result;
+        }
     }
 }
