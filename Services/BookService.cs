@@ -35,5 +35,29 @@ namespace Services
                                                      ).ToList();
             return result;
         }
+
+        /// <summary>
+        /// Hàm này xóa 1 cuốn sách theo mã số - int
+        /// </summary>
+        /// <param name="id"></param>
+        public void DeleteABook(int id)
+        {
+            _repo.Delete(id);  
+        }
+
+        public Book? GetABook(int id)
+        {
+            return _repo.Get(id);
+        }
+
+        public void AddABook(Book book)
+        {
+            _repo.Create(book); //try-catch trùng mã số, bỏ trống ô nhập
+        }
+
+        public void UpdateABook(Book book)
+        {
+            _repo.Update(book);
+        }
     }
 }
