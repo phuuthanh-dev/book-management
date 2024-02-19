@@ -88,10 +88,10 @@ namespace BookStore_HoangNT
             //ném ra ngoài ngoại lệ nếu convert ko đc
             //int.TryParse(txtId.Text, out int id);
             int id;
-            if (string.IsNullOrWhiteSpace(txtId.Text) || !int.TryParse(txtId.Text, out id))
+            if (string.IsNullOrWhiteSpace(txtId.Text) || !int.TryParse(txtId.Text, out id)) //trả true || flase và cả id khai báo ngoài
             {
-                MessageBox.Show("The Book ID is required!!!",
-                    "Book ID required", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("The Book ID is invalid. Please input a number!!!",
+                    "Invalid Book ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             _bookService.DeleteABook(id);
@@ -99,6 +99,37 @@ namespace BookStore_HoangNT
             var result = _bookService.GetAllBooks();
             dgvBookList.DataSource = null;
             dgvBookList.DataSource = result;
+
+            //TODO: XÓA THÀNH CÔNG THÌ XÓA TRẮNG CÁC Ô NHẬP
+            //TODO: ĐÃ XÓA RỒI, MÀ XÓA LẠI, HOẶC GÕ ID ĐÃ XÓA, CHỬI KO TỒN TẠI
+            //HINT: Get(id) của class Repo
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            int id;
+            if (string.IsNullOrWhiteSpace(txtId.Text) || !int.TryParse(txtId.Text, out id))
+            {
+                MessageBox.Show("The Book ID is invalid. Please select a row in the grid to edit or input the number!!!",
+                    "Invalid Book ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            //TODO: PHẢI CHECK NẾU CUỐN SÁCH ĐÃ TỒN TẠI, GIỐNG NHƯ XÓA SÁCH
+            //HINT: GETABOOK()
+
+            //đã có id rồi
+            BookForm bookForm = new BookForm();
+            bookForm.BookId = int.Parse(txtId.Text);
+            //bookForm.Show(); // tạo đc nhiều form, ko nên
+            bookForm.ShowDialog();
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            BookForm bookForm = new BookForm();
+            bookForm.BookId = null;
+            bookForm.ShowDialog();
+            //NEW THÌ SHOW FORM TRỐNG
         }
     }
 }

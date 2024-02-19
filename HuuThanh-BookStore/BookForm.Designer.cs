@@ -30,6 +30,8 @@
         {
             lblFormTitle = new Label();
             gbBookInfo = new GroupBox();
+            txtPrice = new TextBox();
+            txtQuantity = new TextBox();
             cboCategory = new ComboBox();
             dtpReleasedDate = new DateTimePicker();
             txtAuthor = new TextBox();
@@ -46,8 +48,6 @@
             lblId = new Label();
             btnCancel = new Button();
             btnSave = new Button();
-            txtPrice = new TextBox();
-            txtQuantity = new TextBox();
             gbBookInfo.SuspendLayout();
             SuspendLayout();
             // 
@@ -58,9 +58,9 @@
             lblFormTitle.ForeColor = Color.Yellow;
             lblFormTitle.Location = new Point(46, 14);
             lblFormTitle.Name = "lblFormTitle";
-            lblFormTitle.Size = new Size(250, 37);
+            lblFormTitle.Size = new Size(165, 37);
             lblFormTitle.TabIndex = 21;
-            lblFormTitle.Text = "Add/Update Book";
+            lblFormTitle.Text = "Add a Book";
             // 
             // gbBookInfo
             // 
@@ -89,6 +89,20 @@
             gbBookInfo.TabIndex = 22;
             gbBookInfo.TabStop = false;
             gbBookInfo.Text = " Book Info ";
+            // 
+            // txtPrice
+            // 
+            txtPrice.Location = new Point(308, 221);
+            txtPrice.Name = "txtPrice";
+            txtPrice.Size = new Size(116, 23);
+            txtPrice.TabIndex = 5;
+            // 
+            // txtQuantity
+            // 
+            txtQuantity.Location = new Point(115, 221);
+            txtQuantity.Name = "txtQuantity";
+            txtQuantity.Size = new Size(110, 23);
+            txtQuantity.TabIndex = 4;
             // 
             // cboCategory
             // 
@@ -242,20 +256,6 @@
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
             // 
-            // txtPrice
-            // 
-            txtPrice.Location = new Point(308, 221);
-            txtPrice.Name = "txtPrice";
-            txtPrice.Size = new Size(116, 23);
-            txtPrice.TabIndex = 5;
-            // 
-            // txtQuantity
-            // 
-            txtQuantity.Location = new Point(115, 221);
-            txtQuantity.Name = "txtQuantity";
-            txtQuantity.Size = new Size(110, 23);
-            txtQuantity.TabIndex = 4;
-            // 
             // BookForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -273,6 +273,7 @@
             Name = "BookForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add | Update Book";
+            Load += BookForm_Load;
             gbBookInfo.ResumeLayout(false);
             gbBookInfo.PerformLayout();
             ResumeLayout(false);

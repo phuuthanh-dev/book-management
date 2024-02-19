@@ -44,5 +44,20 @@ namespace Services
         {
             _repo.Delete(id);  
         }
+
+        public Book? GetABook(int id)
+        {
+            return _repo.Get(id);
+        }
+
+        public void AddABook(Book book)
+        {
+            _repo.Create(book); //try-catch trùng mã số, bỏ trống ô nhập
+        }
+
+        public void UpdateABook(Book book)
+        {
+            _repo.Update(book);
+        }
     }
 }
