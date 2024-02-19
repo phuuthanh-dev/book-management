@@ -101,8 +101,19 @@ namespace BookStore_HoangNT
             dgvBookList.DataSource = result;
 
             //TODO: XÓA THÀNH CÔNG THÌ XÓA TRẮNG CÁC Ô NHẬP
+            txtId.Text = "";
+            txtName.Text = "";
+            txtDescription.Text = "";
+            dtpReleasedDate.Value = DateTime.Now;
+            txtQuantity.Text = "";
+            txtPrice.Text = "";
+            txtAuthor.Text = "";
+            cboCategory.SelectedValue = 1;
+
             //TODO: ĐÃ XÓA RỒI, MÀ XÓA LẠI, HOẶC GÕ ID ĐÃ XÓA, CHỬI KO TỒN TẠI
             //HINT: Get(id) của class Repo
+
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -122,6 +133,20 @@ namespace BookStore_HoangNT
             bookForm.BookId = int.Parse(txtId.Text);
             //bookForm.Show(); // tạo đc nhiều form, ko nên
             bookForm.ShowDialog();
+
+            var result = _bookService.GetAllBooks();
+            dgvBookList.DataSource = null;
+            dgvBookList.DataSource = result;
+
+            //TODO : xóa ô text
+            txtId.Text = "";
+            txtName.Text = "";
+            txtDescription.Text = "";
+            dtpReleasedDate.Value = DateTime.Now;
+            txtQuantity.Text = "";
+            txtPrice.Text = "";
+            txtAuthor.Text = "";
+            cboCategory.SelectedValue = 1;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -130,6 +155,10 @@ namespace BookStore_HoangNT
             bookForm.BookId = null;
             bookForm.ShowDialog();
             //NEW THÌ SHOW FORM TRỐNG
+            //xong, đóng form thì refresh lưới
+            var result = _bookService.GetAllBooks();
+            dgvBookList.DataSource = null;
+            dgvBookList.DataSource = result;
         }
     }
 }
