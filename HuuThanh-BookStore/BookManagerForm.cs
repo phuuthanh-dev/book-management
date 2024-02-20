@@ -1,4 +1,5 @@
-﻿using Repositories.Entities;
+﻿using Microsoft.IdentityModel.Tokens;
+using Repositories.Entities;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -75,8 +76,16 @@ namespace BookStore_HoangNT
             var result = _bookService.SearchBooks(txtKeyword.Text.Trim());
 
             //TODO: THÔNG BÁO NẾU KẾT QUẢ SEARCH KO CÓ
+            if (result.IsNullOrEmpty())
+            {
+                MessageBox.Show("There are no books matching the search keyword!!!",
+                    "Can't found!!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             dgvBookList.DataSource = null;
             dgvBookList.DataSource = result;
+            dgvBookList.Columns["BookCategory"].Visible = false;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
@@ -88,17 +97,29 @@ namespace BookStore_HoangNT
             //ném ra ngoài ngoại lệ nếu convert ko đc
             //int.TryParse(txtId.Text, out int id);
             int id;
-            if (string.IsNullOrWhiteSpace(txtId.Text) || !int.TryParse(txtId.Text, out id)) //trả true || flase và cả id khai báo ngoài
+            if (string.IsNullOrWhiteSpace(txtId.Text) || !int.TryParse(txtId.Text, out id))
+            //trả true || flase và cả id khai báo ngoài
             {
                 MessageBox.Show("The Book ID is invalid. Please input a number!!!",
                     "Invalid Book ID", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+
+            //TODO: ĐÃ XÓA RỒI, MÀ XÓA LẠI, HOẶC GÕ ID ĐÃ XÓA, CHỬI KO TỒN TẠI
+            //HINT: Get(id) của class Repo
+            if (_bookService.GetABook(id) == null)
+            {
+                MessageBox.Show("Book ID does not exist!!!",
+                    "Book ID not exist", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+
             _bookService.DeleteABook(id);
 
             var result = _bookService.GetAllBooks();
             dgvBookList.DataSource = null;
             dgvBookList.DataSource = result;
+            dgvBookList.Columns["BookCategory"].Visible = false;
 
             //TODO: XÓA THÀNH CÔNG THÌ XÓA TRẮNG CÁC Ô NHẬP
             txtId.Text = "";
@@ -109,11 +130,6 @@ namespace BookStore_HoangNT
             txtPrice.Text = "";
             txtAuthor.Text = "";
             cboCategory.SelectedValue = 1;
-
-            //TODO: ĐÃ XÓA RỒI, MÀ XÓA LẠI, HOẶC GÕ ID ĐÃ XÓA, CHỬI KO TỒN TẠI
-            //HINT: Get(id) của class Repo
-
-
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -127,26 +143,33 @@ namespace BookStore_HoangNT
             }
             //TODO: PHẢI CHECK NẾU CUỐN SÁCH ĐÃ TỒN TẠI, GIỐNG NHƯ XÓA SÁCH
             //HINT: GETABOOK()
+            if (_bookService.GetABook(id) != null)
+            {
+                //đã có id rồi
+                BookForm bookForm = new BookForm();
+                bookForm.BookId = int.Parse(txtId.Text);
+                //bookForm.Show(); // tạo đc nhiều form, ko nên
+                bookForm.ShowDialog();
 
-            //đã có id rồi
-            BookForm bookForm = new BookForm();
-            bookForm.BookId = int.Parse(txtId.Text);
-            //bookForm.Show(); // tạo đc nhiều form, ko nên
-            bookForm.ShowDialog();
+                var result = _bookService.GetAllBooks();
+                dgvBookList.DataSource = null;
+                dgvBookList.DataSource = result;
+                dgvBookList.Columns["BookCategory"].Visible = false;
 
-            var result = _bookService.GetAllBooks();
-            dgvBookList.DataSource = null;
-            dgvBookList.DataSource = result;
-
-            //TODO : xóa ô text
-            txtId.Text = "";
-            txtName.Text = "";
-            txtDescription.Text = "";
-            dtpReleasedDate.Value = DateTime.Now;
-            txtQuantity.Text = "";
-            txtPrice.Text = "";
-            txtAuthor.Text = "";
-            cboCategory.SelectedValue = 1;
+                //TODO : xóa ô text
+                txtId.Text = "";
+                txtName.Text = "";
+                txtDescription.Text = "";
+                dtpReleasedDate.Value = DateTime.Now;
+                txtQuantity.Text = "";
+                txtPrice.Text = "";
+                txtAuthor.Text = "";
+                cboCategory.SelectedValue = 1;
+            } else
+            {
+                MessageBox.Show("Book ID does not exist!!!",
+                    "Book ID not exist", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -159,6 +182,15 @@ namespace BookStore_HoangNT
             var result = _bookService.GetAllBooks();
             dgvBookList.DataSource = null;
             dgvBookList.DataSource = result;
+            dgvBookList.Columns["BookCategory"].Visible = false;
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+            var result = _bookService.GetAllBooks();
+            dgvBookList.DataSource = null;
+            dgvBookList.DataSource = result;
+            dgvBookList.Columns["BookCategory"].Visible = false;
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoginForm));
             btnLogin = new Button();
             txtEmail = new TextBox();
             lblEmail = new Label();
@@ -41,8 +42,9 @@
             // 
             // btnLogin
             // 
-            btnLogin.BackColor = Color.FromArgb(255, 192, 192);
+            btnLogin.BackColor = Color.FromArgb(192, 0, 0);
             btnLogin.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            btnLogin.ForeColor = Color.Cornsilk;
             btnLogin.Location = new Point(53, 217);
             btnLogin.Margin = new Padding(3, 2, 3, 2);
             btnLogin.Name = "btnLogin";
@@ -65,6 +67,7 @@
             // 
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Microsoft Sans Serif", 10.2F, FontStyle.Regular, GraphicsUnit.Point);
+            lblEmail.ForeColor = SystemColors.ControlText;
             lblEmail.Location = new Point(48, 82);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(42, 17);
@@ -95,6 +98,7 @@
             // 
             lblAppName.AutoSize = true;
             lblAppName.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            lblAppName.ForeColor = Color.Cornsilk;
             lblAppName.Location = new Point(129, 20);
             lblAppName.Name = "lblAppName";
             lblAppName.Size = new Size(205, 37);
@@ -103,7 +107,7 @@
             // 
             // gbLoginForm
             // 
-            gbLoginForm.BackColor = Color.LimeGreen;
+            gbLoginForm.BackColor = Color.Cornsilk;
             gbLoginForm.Controls.Add(lblSignIn);
             gbLoginForm.Controls.Add(txtPassword);
             gbLoginForm.Controls.Add(btnLogin);
@@ -134,11 +138,12 @@
             AcceptButton = btnLogin;
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ControlDarkDark;
+            BackColor = Color.FromArgb(192, 0, 0);
             ClientSize = new Size(483, 394);
             Controls.Add(gbLoginForm);
             Controls.Add(lblAppName);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;

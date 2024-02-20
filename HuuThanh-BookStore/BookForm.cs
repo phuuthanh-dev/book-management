@@ -1,4 +1,5 @@
-﻿using Repositories.Entities;
+﻿using Microsoft.IdentityModel.Tokens;
+using Repositories.Entities;
 using Services;
 using System;
 using System.Collections.Generic;
@@ -60,6 +61,14 @@ namespace BookStore_HoangNT
         {
             //TODO: BẮT VALIDATION, IF CÁC Ô NHẬP THỎA HAY KO, KO THÌ CHỬI
             //      BẰNG MASSAGEBOX.SHOW()
+            if (txtId.Text.IsNullOrEmpty() || txtName.Text.IsNullOrEmpty() || txtDescription.Text.IsNullOrEmpty() 
+                || txtAuthor.Text.IsNullOrEmpty()|| txtQuantity.Text.IsNullOrEmpty() || txtPrice.Text.IsNullOrEmpty()
+                || txtAuthor.Text.IsNullOrEmpty())
+            {
+                MessageBox.Show("Please fill in all fields completely!!",
+                    "Input required!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             Book book = new()
             {
                 BookId = int.Parse(txtId.Text.Trim()),

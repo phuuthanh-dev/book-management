@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookManagerForm));
             lblId = new Label();
             lblName = new Label();
             lblDesc = new Label();
@@ -52,6 +53,7 @@
             btnDelete = new Button();
             btnUpdate = new Button();
             btnAdd = new Button();
+            btnReset = new Button();
             gbSearch = new GroupBox();
             btnSearch = new Button();
             dgvBookList = new DataGridView();
@@ -314,6 +316,19 @@
             btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
             // 
+            // btnReset
+            // 
+            btnReset.BackColor = Color.FromArgb(192, 0, 0);
+            btnReset.ForeColor = Color.Cornsilk;
+            btnReset.Location = new Point(575, 153);
+            btnReset.Margin = new Padding(3, 2, 3, 2);
+            btnReset.Name = "btnReset";
+            btnReset.Size = new Size(82, 27);
+            btnReset.TabIndex = 4;
+            btnReset.Text = "Reset";
+            btnReset.UseVisualStyleBackColor = false;
+            btnReset.Click += btnReset_Click;
+            // 
             // gbSearch
             // 
             gbSearch.Controls.Add(btnSearch);
@@ -387,6 +402,7 @@
             BackgroundImage = HuuThanh_BookStore.Properties.Resources.background;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(970, 484);
+            Controls.Add(btnReset);
             Controls.Add(lblFormTitle);
             Controls.Add(lblBookList);
             Controls.Add(dgvBookList);
@@ -394,6 +410,7 @@
             Controls.Add(gbTask);
             Controls.Add(gbBookInfo);
             FormBorderStyle = FormBorderStyle.FixedSingle;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;
@@ -443,5 +460,6 @@
         private Label lblFormTitle;
         private TextBox txtPrice;
         private TextBox txtQuantity;
+        private Button btnReset;
     }
 }
