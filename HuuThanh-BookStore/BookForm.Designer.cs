@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BookForm));
             lblFormTitle = new Label();
             gbBookInfo = new GroupBox();
             txtPrice = new TextBox();
@@ -269,6 +270,7 @@
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             FormBorderStyle = FormBorderStyle.FixedDialog;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(3, 2, 3, 2);
             MaximizeBox = false;
             MinimizeBox = false;

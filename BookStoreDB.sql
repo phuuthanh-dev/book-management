@@ -1,6 +1,6 @@
 ﻿﻿USE [master]
 GO
-/****** Object:  Database [BookManagement2024DB]    Script Date: 16/06/2024 10:27:19 CH ******/
+/****** Object:  Database [BookManagement2024DB]    Script Date: 16/02/2024 10:27:19 CH ******/
 CREATE DATABASE [BookManagement2024DB]
 GO
 USE [BookManagement2024DB]
@@ -20,7 +20,7 @@ CREATE TABLE [dbo].[Book](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[BookCategory]    Script Date: 16/06/2023 10:27:20 CH ******/
+/****** Object:  Table [dbo].[BookCategory]    Script Date: 16/02/2024 10:27:20 CH ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -35,7 +35,7 @@ CREATE TABLE [dbo].[BookCategory](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[BookManagementMember]    Script Date: 16/06/2023 10:27:20 CH ******/
+/****** Object:  Table [dbo].[BookManagementMember]    Script Date: 16/02/2024 10:27:20 CH ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -68,11 +68,16 @@ INSERT [dbo].[Book] ([BookId], [BookName], [Description], [ReleaseDate], [Quanti
 INSERT [dbo].[Book] ([BookId], [BookName], [Description], [ReleaseDate], [Quantity], [Price], [BookCategoryId], [Author]) VALUES (12, N'Clever Girl Finance: Ditch debt, save money and build real wealth', N'Join the ranks of thousands of smart and savvy women who have turned to money expert and author Bola Sokunbi for guidance on ditching debt, saving money, and building real wealth.', CAST(N'2019-06-25T00:00:00.000' AS DateTime), 17, 14.99, 4, N'Bola Sokunbi')
 INSERT [dbo].[Book] ([BookId], [BookName], [Description], [ReleaseDate], [Quantity], [Price], [BookCategoryId], [Author]) VALUES (13, N'Growing Money', N'Colin and Devon are cousins who share the same birthday. On their eighth birthday, their grandpa gifts them two envelopes of money to do anything they like with it.', CAST(N'2023-06-13T00:00:00.000' AS DateTime), 29, 11.99, 4, N'Brandon L Parker')
 INSERT [dbo].[Book] ([BookId], [BookName], [Description], [ReleaseDate], [Quantity], [Price], [BookCategoryId], [Author]) VALUES (14, N'Clever Girl Finance: Learn How Investing Works, Grow Your Money', N'Clever Girl Finance: Learn How Investing Works, Grow Your Money is the leading guide for women who seek to learn the basic foundations of personal investing. In a no-nonsense and straightforward style, this book teaches readers.', CAST(N'2020-10-02T00:00:00.000' AS DateTime), 19, 13.6, 4, N'Bola Sokunbi')
+INSERT [dbo].[Book] ([BookId], [BookName], [Description], [ReleaseDate], [Quantity], [Price], [BookCategoryId], [Author]) VALUES (15, N'Nhà giả kim', N'Nhà Giả Kim là sách cổ tích giản dị, nhân ái, giàu chất thơ, thấm đẫm những minh triết huyền bí của phương Đông, được full bởi tác giả Paulo Coelho. Trong lần xuất bản đầu tiên tại …', CAST(N'2005-01-01T00:00:00.000' AS DateTime), 10, 45.99, 2, N'Paulo Coelho')
+INSERT [dbo].[Book] ([BookId], [BookName], [Description], [ReleaseDate], [Quantity], [Price], [BookCategoryId], [Author]) VALUES (16, N'Đừng khóc giữa sài gòn', N'Khóc giữa Sài Gòn là một trong những tác phẩm đặc sắc của nhà văn trẻ Nguyễn Ngọc Thạch được xuất bản vào năm 2014, cuốn sách sẽ đưa người đọc đến với từng khoảng …', CAST(N'2018-18-09T00:00:00.000' AS DateTime), 27, 10.29, 1, N'Nguyễn Ngọc Thạch')
+INSERT [dbo].[Book] ([BookId], [BookName], [Description], [ReleaseDate], [Quantity], [Price], [BookCategoryId], [Author]) VALUES (2204, N'Tuổi trẻ đáng giá bao nhiêu', N'Những ngày tuổi trẻ tưởng dài rộng mênh mông nhưng kỳ thực lại rất hữu hạn ngắn ngủi. Nên nếu bạn còn trẻ, hãy học cách để biến tuổi trẻ của bạn thành vô giá.', CAST(N'2024-02-20T00:00:00.000' AS DateTime), 100, 12.69, 2, N'Rossie Nguyễn')
+INSERT [dbo].[Book] ([BookId], [BookName], [Description], [ReleaseDate], [Quantity], [Price], [BookCategoryId], [Author]) VALUES (68, N'Mình là nắng việc của mình là chói chang', N'Ta là nắng, việc của ta là chói chang, ta hãy chói chang theo cách của riêng ta, đừng tuân theo một vết chân của ai cả. Cuộc sống này ai cũng có những nhiệm vụ cho riêng mình, hãy tỏa sáng theo cách riêng của mình.', CAST(N'2018-08-11T00:00:00.000' AS DateTime), 100, 76, 2, N'Kazuko Watanable')
 GO
 INSERT [dbo].[BookCategory] ([BookCategoryId], [BookGenreType], [Description]) VALUES (1, N'Fiction', N'Fiction is any creative work, chiefly any narrative work, portraying individuals, events, or places that are imaginary, or in ways that are imaginary.')
-INSERT [dbo].[BookCategory] ([BookCategoryId], [BookGenreType], [Description]) VALUES (2, N'Science Fiction', N'Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life.')
-INSERT [dbo].[BookCategory] ([BookCategoryId], [BookGenreType], [Description]) VALUES (3, N'Historical Fiction', N'Historical fiction is a literary genre in which the plot takes place in a setting related to the past events, but is fictional.')
-INSERT [dbo].[BookCategory] ([BookCategoryId], [BookGenreType], [Description]) VALUES (4, N'Finance', N'Finance is a field that deals with the study of investments. It includes the dynamics of assets and liabilities over time under conditions of different degrees of uncertainty and risk. Finance can also be defined as the science of money management. Finance aims to price assets based on their risk level and their expected rate of return.')
+INSERT [dbo].[BookCategory] ([BookCategoryId], [BookGenreType], [Description]) VALUES (2, N'Self-help', N'Self-help or self-improvement is a self-directed improvement of oneself—economically, physically, intellectually, or emotionally—often with a substantial psychological basis.')
+INSERT [dbo].[BookCategory] ([BookCategoryId], [BookGenreType], [Description]) VALUES (3, N'Science Fiction', N'Science fiction is a genre of speculative fiction, which typically deals with imaginative and futuristic concepts such as advanced science and technology, space exploration, time travel, parallel universes, and extraterrestrial life.')
+INSERT [dbo].[BookCategory] ([BookCategoryId], [BookGenreType], [Description]) VALUES (4, N'Historical Fiction', N'Historical fiction is a literary genre in which the plot takes place in a setting related to the past events, but is fictional.')
+INSERT [dbo].[BookCategory] ([BookCategoryId], [BookGenreType], [Description]) VALUES (5, N'Finance', N'Finance is a field that deals with the study of investments. It includes the dynamics of assets and liabilities over time under conditions of different degrees of uncertainty and risk. Finance can also be defined as the science of money management. Finance aims to price assets based on their risk level and their expected rate of return.')
 GO
 INSERT [dbo].[BookManagementMember] ([MemberId], [Password], [Email], [FullName], [MemberRole]) VALUES (1, N'12345', N'admin', N'Administrator', 1)
 INSERT [dbo].[BookManagementMember] ([MemberId], [Password], [Email], [FullName], [MemberRole]) VALUES (2, N'Staff@zxc123', N'staff@local', N'Staff', 2)
